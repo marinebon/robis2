@@ -13,7 +13,7 @@ occurrence <- function(
   i <- 1
   total <- 0
   datalist <- list()
-  size <- 1000
+  size <- 10000
 
   t <- proc.time()
 
@@ -43,8 +43,7 @@ occurrence <- function(
     after <- res$results$id[nrow(res$results)]
 
     if(res$total > 0) {
-      df <- res$results %>% select(-location, -area_id)
-      datalist[[i]] <- df
+      datalist[[i]] <- res$results
       total <- total + nrow(res$results)
       log_progress(total, res$total)
       i <- i + 1
