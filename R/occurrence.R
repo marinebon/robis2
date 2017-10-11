@@ -13,7 +13,7 @@ occurrence <- function(
   i <- 1
   total <- 0
   datalist <- list()
-  size <- 10000
+  size <- 5000
 
   t <- proc.time()
 
@@ -32,7 +32,7 @@ occurrence <- function(
 
     result <- http_request("GET", "occurrence", query)
 
-    stop_for_status(result)
+    stop_for_status(result, result$url)
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE )
 
